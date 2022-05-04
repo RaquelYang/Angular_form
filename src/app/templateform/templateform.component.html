@@ -3,7 +3,7 @@
   <form #myForm="ngForm">
     <div class="form-group">
       <label for="email">Email</label>
-      <input ngModel type="email" class="form-control" id="email" name="email" placeholder="Email">
+      <input [(ngModel)]="email" type="email" class="form-control" id="email" name="email" placeholder="Email">
     </div>
     <div class="errors">
       <p>請輸入帳號</p>
