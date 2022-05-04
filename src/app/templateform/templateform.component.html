@@ -3,10 +3,18 @@
   <form #myForm="ngForm">
     <div class="form-group">
       <label for="email">Email</label>
-      <input [(ngModel)]="email" type="email" class="form-control" id="email" name="email" placeholder="Email">
+      <input [(ngModel)]="email"
+      type="email" class="form-control"
+      id="email" name="email" placeholder="Email"
+      required
+      minlength="5"
+      pattern="^[a-zA-Z0-9.!#$%&』*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+      #iemail="ngModel">
     </div>
-    <div class="errors">
-      <p>請輸入帳號</p>
+    <div class="errors" *ngIf="iemail.errors">
+      <p *ngIf="iemail.errors['minlength']">最少要 5 個字</p>
+      <p *ngIf="iemail.errors['required']">必填項目</p>
+      <p *ngIf="iemail.errors['pattern']">請輸入正確的 Email 格式</p>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
