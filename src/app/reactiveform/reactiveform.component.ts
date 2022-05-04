@@ -20,6 +20,8 @@ export class ReactiveformComponent implements OnInit {
   ngOnInit(): void {
   }
   postData(){
-    console.log(this.checkoutForm);
+    console.log('FomeGroup object', this.checkoutForm);
+    console.log('Entire Form Value', this.checkoutForm.value);
+    console.log('Email Address', this.checkoutForm.value.emailAddr);
   }
 }
