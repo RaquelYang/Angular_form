@@ -7,11 +7,12 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class ModelformComponent implements OnInit {
   form;
+  emailPattern = '^[a-zA-Z0-9.!#$%&』*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
   constructor(private _fb: FormBuilder) {
     this.form = this._fb.group({
-      firstName: '',
+      firstName: ['', [Validators.required, Validators.minLength(5)]],
       nickName: '',
-      email: '',
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       phone: '',
       birthday: '',
       interest: this._fb.group({
