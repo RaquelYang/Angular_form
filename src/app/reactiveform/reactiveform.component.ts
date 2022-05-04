@@ -19,5 +19,7 @@ export class ReactiveformComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  postData(){
+    console.log(this.checkoutForm);
+  }
 }

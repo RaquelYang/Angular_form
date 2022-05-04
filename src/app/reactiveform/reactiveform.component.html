@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-8 mx-auto mt-5">
       <h3 class="text-center pb-4">Checkout Form - Using Reactive Forms</h3>
-      <form [formGroup]="checkoutForm">
+      <form [formGroup]="checkoutForm" (ngSubmit)="postData()">
         <div class="mb-3 mt-3">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
           <input type="email" class="form-control"
