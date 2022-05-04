@@ -17,28 +17,28 @@
       </div>
       <div class="form-group">
         <label>請輸入電話</label>
-        <input type="text" class="form-control" id="keyNum" formControlName="keyNum" placeholder="請輸入電話">
+        <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="請輸入電話">
       </div>
       <div class="form-group">
         <label>請輸入生日</label>
         <input type="text" class="form-control" id="birthday" formControlName="birthday" placeholder="yyyy/mm/dd">
       </div>
       <h3>請選擇興趣</h3>
-      <div class="form-group">
+      <div class="form-group" formGroupName="interest">
         <label>
-          <input type="checkbox" id="movie" formControlName="checkArea" value="movie"> 電影
+          <input type="checkbox" id="movie" formControlName="movie" value="movie"> 電影
         </label>
         <label>
-          <input type="checkbox" id="music" formControlName="checkArea" value="music"> 音樂
+          <input type="checkbox" id="music" formControlName="music" value="music"> 音樂
         </label>
         <label>
-          <input type="checkbox" id="technology" formControlName="checkArea" value="technology"> 技術
+          <input type="checkbox" id="technology" formControlName="technology" value="technology"> 技術
         </label>
         <label>
-          <input type="checkbox" id="sports" formControlName="checkArea" value="sports"> 運動
+          <input type="checkbox" id="sports" formControlName="sports" value="sports"> 運動
         </label>
         <label>
-          <input type="checkbox" id="games" formControlName="checkArea" value="games"> 遊戲
+          <input type="checkbox" id="games" formControlName="games" value="games"> 遊戲
         </label>
       </div>
       <h3>性別</h3>
@@ -53,4 +53,7 @@
     </div>
     <button type="submit" class="btn btn-default">下一位</button>
   </form>
+  <pre>
+    {{ form.value | json }}
+  </pre>
 </div>
