@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactiveform',
@@ -9,10 +9,15 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class ReactiveformComponent implements OnInit {
   checkoutForm: FormGroup;
   constructor(private formBuilder: FormBuilder) {
-    this.checkoutForm = formBuilder.group({
+    /*this.checkoutForm = formBuilder.group({
       emailAddr: new FormControl(),
       quantity: new FormControl(),
       terms: new FormControl(),
+    })*/
+  this.checkoutForm = formBuilder.group({
+    emailAddr: ['',[Validators.required, Validators.email, Validators.minLength(5)]],
+    quantity: ['',Validators.required],
+    terms: ['',Validators.requiredTrue],
   })
 
   }
@@ -20,8 +25,9 @@ export class ReactiveformComponent implements OnInit {
   ngOnInit(): void {
   }
   postData(){
-    console.log('FomeGroup object', this.checkoutForm);
+    console.log('FormGroup object', this.checkoutForm);
     console.log('Entire Form Value', this.checkoutForm.value);
     console.log('Email Address', this.checkoutForm.value.emailAddr);
+    console.log(this.checkoutForm.get('emailAddr'));
   }
 }

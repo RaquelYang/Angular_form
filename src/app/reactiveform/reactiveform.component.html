@@ -8,19 +8,22 @@
           <input type="email" class="form-control"
           id="exampleInputEmail1" aria-describedby="emailHelp"
           formControlName="emailAddr">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('required')">Enter Email Address</span>
+          <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('email')">Enter Valid Email Address</span>
+          <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('minlength')">Minimum 5 characters required</span>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Quantity</label>
           <input type="text" class="form-control" id="exampleInputPassword1"
           formControlName="quantity">
+          <span class="red" *ngIf="checkoutForm.get('quantity')?.touched && checkoutForm.get('quantity')?.hasError('required')">Enter Email Quantity</span>
         </div>
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1"
           formControlName="terms">
           <label class="form-check-label" for="exampleCheck1">Agree a terms</label>
         </div>
-        <button type="submit" class="btn btn-primary">Check out</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Check out</button>
       </form>
     </div>
   </div>
