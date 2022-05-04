@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./templateform.component.scss']
 })
 export class TemplateformComponent implements OnInit {
-  email:string = "abc@abc.com"
+  email: string = "abc@abc.com"
   constructor() { }
 
   ngOnInit(): void {
