@@ -11,5 +11,4 @@ export class TemplateformComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
