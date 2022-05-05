@@ -26,6 +26,10 @@
         <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Check out</button>
         <button type="submit" class="btn btn-secondary mx-3" (click)="resetForm()">Clear</button>
       </form>
+      <div class="mt-5">
+        Entered value is {{ valueChangeTracked }}
+      </div>
     </div>
   </div>
 </div>
+

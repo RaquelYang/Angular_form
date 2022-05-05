@@ -8,6 +8,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class ReactiveformComponent implements OnInit {
   checkoutForm: FormGroup;
+  valueChangeTracked = ''
   constructor(private formBuilder: FormBuilder) {
     /*this.checkoutForm = formBuilder.group({
       emailAddr: new FormControl(),
@@ -17,12 +18,23 @@ export class ReactiveformComponent implements OnInit {
   this.checkoutForm = formBuilder.group({
     emailAddr: ['',[Validators.required, Validators.email, Validators.minLength(5)]],
     quantity: ['',Validators.required],
-    terms: ['',Validators.requiredTrue],
+    terms: [false,Validators.requiredTrue],
   })
 
   }
 
   ngOnInit(): void {
+    /*
+    // 偵測 checkoutForm 的 emailAddr 的值
+    this.checkoutForm.get('emailAddr')?.valueChanges.subscribe(data => {
+      this.valueChangeTracked = data;
+    })
+    */
+    // 偵測整個 checkoutForm
+    this.checkoutForm.valueChanges.subscribe( data => {
+      console.log(data);
+    })
+
     /* setValue 需要輸入整個表單的值，若有少一個則會 error
     this.checkoutForm.setValue({
       emailAddr: 'text@abc.com',
