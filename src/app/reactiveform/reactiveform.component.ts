@@ -41,5 +41,10 @@ export class ReactiveformComponent implements OnInit {
     console.log('Entire Form Value', this.checkoutForm.value);
     console.log('Email Address', this.checkoutForm.value.emailAddr);
     console.log(this.checkoutForm.get('emailAddr'));
+    this.resetForm()
+  }
+  resetForm(){
+    // 清除整個表單
+    this.checkoutForm.reset();
   }
 }

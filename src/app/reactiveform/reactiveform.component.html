@@ -24,6 +24,7 @@
           <label class="form-check-label" for="exampleCheck1">Agree a terms</label>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Check out</button>
+        <button type="submit" class="btn btn-secondary mx-3" (click)="resetForm()">Clear</button>
       </form>
     </div>
   </div>
