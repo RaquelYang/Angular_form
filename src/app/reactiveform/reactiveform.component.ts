@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-reactiveform',
@@ -15,15 +15,51 @@ export class ReactiveformComponent implements OnInit {
       quantity: new FormControl(),
       terms: new FormControl(),
     })*/
-  this.checkoutForm = formBuilder.group({
-    emailAddr: ['',[Validators.required, Validators.email, Validators.minLength(5)]],
-    quantity: ['',Validators.required],
-    terms: [false,Validators.requiredTrue],
-  })
 
+    this.checkoutForm = formBuilder.group({
+      emailAddr: ['',[Validators.required, Validators.email, Validators.minLength(5)]],
+      quantity: ['',Validators.required],
+      terms: [false,Validators.requiredTrue],
+      // FormArray 包一個 FormGroup
+      items: this.formBuilder.array([
+        this.formBuilder.group({
+          itemId: ['1'],
+          itemName: ['2'],
+          itemDesc: ['3'],
+          itemDone: ['', Validators.requiredTrue]
+        })
+      ])
+    })
+    // items 格式，較符合實際開發資料形式
+    /*  [
+          {itemId: '1', itemName: '2', itemDesc: '3', itemDone: ''},
+          {itemId: '1', itemName: '2', itemDesc: '3', itemDone: ''},
+          {itemId: '1', itemName: '2', itemDesc: '3', itemDone: ''},
+          {itemId: '1', itemName: '2', itemDesc: '3', itemDone: ''},
+        ]
+    */
   }
-
+  get itemsForm(){
+    return this.checkoutForm.get('items') as FormArray
+  }
   ngOnInit(): void {
+    // get FormArray data
+    console.log(this.itemsForm.value.length);
+    console.log(this.itemsForm.value);
+    console.log(this.itemsForm.value[0]);
+    console.log(this.itemsForm.value[0].itemDesc);
+    // set FormArray data
+    this.itemsForm.setValue([
+      {
+        itemId: ['4'],
+        itemName: ['9'],
+        itemDesc: ['8'],
+        itemDone: ['', Validators.requiredTrue]
+      }
+    ])
+    // 只重置 itemsForm 的部分
+    this.itemsForm.reset()
+
     /*
     // valueChanges 偵測 checkoutForm 的 emailAddr 的值
     this.checkoutForm.get('emailAddr')?.valueChanges.subscribe(data => {
@@ -31,18 +67,22 @@ export class ReactiveformComponent implements OnInit {
     })
     */
     // valueChanges 偵測整個 checkoutForm
+    /*
     const value = this.checkoutForm.valueChanges.subscribe( data => {
       console.log(data);
     })
+    */
 
     // statusChanges 判斷 emailAddr 是否合法
     /*this.checkoutForm.get('emailAddr')?.statusChanges.subscribe( data => {
       console.log(data);
     })*/
     // statusChanges 判斷整個 checkoutForm 是否合法
+    /*
     this.checkoutForm.statusChanges.subscribe( data => {
       console.log(data);
     })
+    */
 
     /* setValue 需要輸入整個表單的值，若有少一個則會 error
     this.checkoutForm.setValue({
@@ -68,4 +108,14 @@ export class ReactiveformComponent implements OnInit {
     // 清除整個表單
     this.checkoutForm.reset();
   }
+  removeItem(){
+
+  }
+}
+
+interface Item {
+  itemId: [string],
+  itemName: [string],
+  itemDesc: [string],
+  itemDone: [boolean]
 }

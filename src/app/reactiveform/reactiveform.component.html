@@ -18,6 +18,17 @@
           formControlName="quantity">
           <span class="red" *ngIf="checkoutForm.get('quantity')?.touched && checkoutForm.get('quantity')?.hasError('required')">Enter Email Quantity</span>
         </div>
+        <div class="mb-3">
+          <label class="form-check-label" for="exampleCheck1">Items</label>
+          <div formArrayName="items">
+            <div *ngFor="let item of itemsForm.controls; let i = index" [formGroupName]="i">
+              <input type="text" class="form-control" formControlName="itemId" id="task{{i}}">
+              <input type="text" class="form-control" formControlName="itemName" id="task{{i}}">
+              <input type="text" class="form-control" formControlName="itemDesc" id="task{{i}}">
+              <input type="radio" formControlName="itemDone"> Mark as Done
+            </div>
+          </div>
+        </div>
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1"
           formControlName="terms">
