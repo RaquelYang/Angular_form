@@ -9,7 +9,7 @@
           id="exampleInputEmail1" aria-describedby="emailHelp"
           formControlName="emailAddr">
           <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('required')">Enter Email Address</span>
-          <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('email')">Enter Valid Email Address</span>
+          <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('email')" >Enter Valid Email Address</span>
           <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('minlength')">Minimum 5 characters required</span>
         </div>
         <div class="mb-3">

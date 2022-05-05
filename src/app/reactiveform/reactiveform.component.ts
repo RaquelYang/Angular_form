@@ -23,6 +23,18 @@ export class ReactiveformComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /* setValue 需要輸入整個表單的值，若有少一個則會 error
+    this.checkoutForm.setValue({
+      emailAddr: 'text@abc.com',
+      quantity: 10,
+      terms: true
+    })*/
+
+    // patchValue 只需要輸入自己想要的數值就好
+    this.checkoutForm.patchValue({
+      emailAddr: 'text@abc.com',
+      quantity: 10
+    })
   }
   postData(){
     console.log('FormGroup object', this.checkoutForm);
