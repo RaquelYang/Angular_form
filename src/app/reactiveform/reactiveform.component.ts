@@ -25,13 +25,22 @@ export class ReactiveformComponent implements OnInit {
 
   ngOnInit(): void {
     /*
-    // 偵測 checkoutForm 的 emailAddr 的值
+    // valueChanges 偵測 checkoutForm 的 emailAddr 的值
     this.checkoutForm.get('emailAddr')?.valueChanges.subscribe(data => {
       this.valueChangeTracked = data;
     })
     */
-    // 偵測整個 checkoutForm
-    this.checkoutForm.valueChanges.subscribe( data => {
+    // valueChanges 偵測整個 checkoutForm
+    const value = this.checkoutForm.valueChanges.subscribe( data => {
+      console.log(data);
+    })
+
+    // statusChanges 判斷 emailAddr 是否合法
+    /*this.checkoutForm.get('emailAddr')?.statusChanges.subscribe( data => {
+      console.log(data);
+    })*/
+    // statusChanges 判斷整個 checkoutForm 是否合法
+    this.checkoutForm.statusChanges.subscribe( data => {
       console.log(data);
     })
 
