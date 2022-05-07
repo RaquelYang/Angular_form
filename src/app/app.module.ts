@@ -8,6 +8,7 @@ import { TemplateformComponent } from './templateform/templateform.component';
 import { ModelformComponent } from './modelform/modelform.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 import { ObservableComponent } from './observable/observable.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ObservableComponent } from './observable/observable.component';
     TemplateformComponent,
     ModelformComponent,
     ReactiveformComponent,
-    ObservableComponent
+    ObservableComponent,
+    ContactsComponent
   ],
   imports: [
     FormsModule,
