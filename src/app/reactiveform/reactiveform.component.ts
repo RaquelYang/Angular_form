@@ -39,6 +39,7 @@ export class ReactiveformComponent implements OnInit {
         ]
     */
   }
+  // 呼叫此函數他會回傳整個 FormArray 它可以使用 Array 的方法， push, pop, split
   get itemsForm(){
     return this.checkoutForm.get('items') as FormArray
   }
@@ -108,8 +109,17 @@ export class ReactiveformComponent implements OnInit {
     // 清除整個表單
     this.checkoutForm.reset();
   }
-  removeItem(){
-
+  // 當使用者觸發這格方法會新增一個 item 到 formArray 裡
+  addNewItem(){
+    const itemLength = this.itemsForm.length;
+    const newItem = this.formBuilder.group({
+      itemId: [itemLength + 1],
+      itemName: [''],
+      itemDesc: [''],
+      itemDone: ['', Validators.requiredTrue]
+    });
+    console.log(itemLength);
+    this.itemsForm.push(newItem);
   }
 }
 
