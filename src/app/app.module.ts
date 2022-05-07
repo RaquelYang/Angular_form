@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { TemplateformComponent } from './templateform/templateform.component';
 import { ModelformComponent } from './modelform/modelform.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { ObservableComponent } from './observable/observable.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateformComponent,
     ModelformComponent,
-    ReactiveformComponent
+    ReactiveformComponent,
+    ObservableComponent
   ],
   imports: [
     FormsModule,
