@@ -121,11 +121,10 @@ export class ReactiveformComponent implements OnInit {
     console.log(itemLength);
     this.itemsForm.push(newItem);
   }
+  removeItem(itemId: number){
+    console.log(itemId);
+    this.itemsForm.removeAt(itemId);
+  }
 }
 
-interface Item {
-  itemId: [string],
-  itemName: [string],
-  itemDesc: [string],
-  itemDone: [boolean]
-}
+

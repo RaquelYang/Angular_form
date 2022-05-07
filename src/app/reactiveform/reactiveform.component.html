@@ -22,6 +22,7 @@
           <label class="form-check-label" for="exampleCheck1">Items</label>
           <div formArrayName="items">
             <div *ngFor="let item of itemsForm.controls; let i = index" [formGroupName]="i">
+              <a class="btn btn-primary" [routerLink] (click)="removeItem(i)">Remove Item</a>
               <input type="text" class="form-control" formControlName="itemId" id="task{{i}}">
               <input type="text" class="form-control" formControlName="itemName" id="task{{i}}">
               <input type="text" class="form-control" formControlName="itemDesc" id="task{{i}}">
@@ -37,6 +38,7 @@
         <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Check out</button>
         <button type="submit" class="btn btn-secondary mx-3" (click)="resetForm()">Clear</button>
         <button type="submit" class="btn btn-secondary mx-3" (click)="addNewItem()">Add Row</button>
+        <!-- <button type="submit" class="btn btn-secondary mx-3" (click)="removeItem(i)">Remove Row</button> -->
       </form>
       <div class="mt-5">
         Entered value is {{ valueChangeTracked }}
