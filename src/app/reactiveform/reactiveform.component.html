@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto mt-5">
+      <h3 class="text-center pb-4">Checkout Form - Using Reactive Forms</h3>
+      <form [formGroup]="checkoutForm" (ngSubmit)="postData()">
+        <div class="mb-3 mt-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control"
+          id="exampleInputEmail1" aria-describedby="emailHelp"
+          formControlName="emailAddr">
+          <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('required')">Enter Email Address</span>
+          <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('email')" >Enter Valid Email Address</span>
+          <span class="red" *ngIf="checkoutForm.get('emailAddr')?.touched && checkoutForm.get('emailAddr')?.hasError('minlength')">Minimum 5 characters required</span>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Quantity</label>
+          <input type="text" class="form-control" id="exampleInputPassword1"
+          formControlName="quantity">
+          <span class="red" *ngIf="checkoutForm.get('quantity')?.touched && checkoutForm.get('quantity')?.hasError('required')">Enter Email Quantity</span>
+        </div>
+        <div class="mb-3">
+          <label class="form-check-label" for="exampleCheck1">Items</label>
+          <div formArrayName="items">
+            <div *ngFor="let item of itemsForm.controls; let i = index" [formGroupName]="i">
+              <a class="btn btn-primary" [routerLink] (click)="removeItem(i)">Remove Item</a>
+              <input type="text" class="form-control" formControlName="itemId" id="task{{i}}">
+              <input type="text" class="form-control" formControlName="itemName" id="task{{i}}">
+              <input type="text" class="form-control" formControlName="itemDesc" id="task{{i}}">
+              <input type="radio" formControlName="itemDone"> Mark as Done
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1"
+          formControlName="terms">
+          <label class="form-check-label" for="exampleCheck1">Agree a terms</label>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Check out</button>
+        <button type="submit" class="btn btn-secondary mx-3" (click)="resetForm()">Clear</button>
+        <button type="submit" class="btn btn-secondary mx-3" (click)="addNewItem()">Add Row</button>
+        <!-- <button type="submit" class="btn btn-secondary mx-3" (click)="removeItem(i)">Remove Row</button> -->
+      </form>
+      <div class="mt-5">
+        Entered value is {{ valueChangeTracked }}
+      </div>
+    </div>
+  </div>
+</div>
+

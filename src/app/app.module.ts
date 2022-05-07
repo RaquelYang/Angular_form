@@ -6,12 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateformComponent } from './templateform/templateform.component';
 import { ModelformComponent } from './modelform/modelform.component';
+import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { ObservableComponent } from './observable/observable.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateformComponent,
-    ModelformComponent
+    ModelformComponent,
+    ReactiveformComponent,
+    ObservableComponent,
+    ContactsComponent
   ],
   imports: [
     FormsModule,
