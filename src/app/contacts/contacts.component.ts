@@ -45,4 +45,13 @@ export class ContactsComponent implements OnInit {
     });
   }
 
+  // 修改一個靜態資料的 form data
+  updateContact(contactId: any) {
+    const newForm = { id:contactId , firstName: 'Quazar123', lastName: 'Yang'};
+    this.contactsService.updateContact(contactId, newForm).subscribe( data => {
+      console.log(data);
+      this.msgTrue = true;
+    })
+  }
+
 }
