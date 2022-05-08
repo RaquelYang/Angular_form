@@ -2,7 +2,7 @@
 
 <ul>
   <li *ngFor="let contact of contactList">
-    {{ contact.firstName }}
+    {{ contact.id }},{{ contact.firstName }},{{ contact.lastName }}
   </li>
 </ul>
 
@@ -37,4 +37,6 @@
 </div>
 
 
-<button (click)="updateContact(1)">Update Contact Id: 1</button>
+<button class="btn btn-primary" (click)="updateContact(1)">Update Contact Id: 1</button>
+
+<button class="btn btn-danger" (click)="deleteContact(1)">Delete Contact Id: 1</button>

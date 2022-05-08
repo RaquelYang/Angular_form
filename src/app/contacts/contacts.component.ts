@@ -54,4 +54,10 @@ export class ContactsComponent implements OnInit {
     })
   }
 
+  deleteContact(contactId: any) {
+    this.contactsService.deleteContact(contactId).subscribe( data => {
+      console.log(data);
+    })
+  }
+
 }

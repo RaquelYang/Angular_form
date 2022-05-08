@@ -23,6 +23,11 @@ export class ContactsService {
     return this.httpClient.put(endPoint , updatedBody)
   }
 
+  deleteContact(contactId: any) {
+    const deleteEndpoint = 'http://localhost:3000/contacts/' + contactId
+    return this.httpClient.delete(deleteEndpoint);
+  }
+
   callingFromTemplate() {
     console.log('Calling From Template Directly.');
   }
