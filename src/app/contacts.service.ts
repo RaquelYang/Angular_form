@@ -9,13 +9,29 @@ export class ContactsService {
   constructor(private httpClient: HttpClient) { }
 
   getContacts() {
-    return this.httpClient.get('http://localhost:3000/contacts');
+    let httpHeaders = new HttpHeaders({
+      'content-type': 'application/json',
+      'Authorization': 'RaquelYANG',
+      'timeOutSeconds': '3000'
+    });
+
+    // custom headers
+    // 可以使用 set, append 來新增自定義參數
+    httpHeaders = httpHeaders.set('arc-id','110')
+    // httpHeaders = httpHeaders.append('arc-id','110')
+
+    let time = httpHeaders.get('timeOutSeconds')
+    if(time === '3000'){
+      httpHeaders = httpHeaders.set('Authorization','')
+    }
+
+    return this.httpClient.get('http://localhost:3000/contacts', { headers: httpHeaders });
   }
 
   createContact(createResource: any) {
-    const httpHeader = new HttpHeaders();
-    httpHeader.append('content-type', 'application/json')
-    return this.httpClient.post('http://localhost:3000/contacts', createResource, { headers: httpHeader })
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('content-type', 'application/json')
+    return this.httpClient.post('http://localhost:3000/contacts', createResource, { headers: httpHeaders })
   }
 
   updateContact(contactId: any, updatedBody: any) {
