@@ -7,3 +7,32 @@
 </ul>
 
 <button (click)="contactsService.callingFromTemplate()">Call directing</button>
+
+<h4>Create New Contact</h4>
+
+<div *ngIf="msgTrue">Contact created successfully</div>
+<button (click)="addNewContact()">Add New Contact</button>
+
+<h4>Create New Dynamic Contact</h4>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <form #addNewContactForm="ngForm" (submit)="addNewContact2(addNewContactForm)">
+        <input class="form-control"
+          type="text" placeholder="id"
+          name="id" ngModel required
+        >
+        <input class="form-control"
+          type="text" placeholder="firstName"
+          name="firstName" ngModel required
+        >
+        <input class="form-control"
+          type="text" placeholder="lastName"
+          name="lastName" ngModel required
+        >
+        <button class="btn btn-primary" [disabled]="!addNewContactForm.valid">Add New Dynamic Contact</button>
+      </form>
+    </div>
+  </div>
+</div>
+
