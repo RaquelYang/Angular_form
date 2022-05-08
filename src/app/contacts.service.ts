@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,7 @@ export class ContactsService {
   }
 
   updateContact(contactId: any, updatedBody: any) {
+
     const endPoint = 'http://localhost:3000/contacts/' + contactId
     return this.httpClient.put(endPoint , updatedBody)
   }
@@ -42,6 +43,27 @@ export class ContactsService {
   deleteContact(contactId: any) {
     const deleteEndpoint = 'http://localhost:3000/contacts/' + contactId
     return this.httpClient.delete(deleteEndpoint);
+  }
+
+  // get contact by id
+  getContactById() {
+    // 使用 Object 傳 query 參數
+    const httpParams = new HttpParams({
+      fromObject: {
+        id: ['2','3'],
+        lastName: ['Wang','333']
+      }
+    });
+    // 也可以用字串傳
+    // http://localhost:3000/contacts?param1=value1&param2=value2
+    /* const httpParams = new HttpParams({
+      formString: `param1=${var1}&param2=${var2}`
+    }); */
+    // http://localhost:3000/contacts?query=mark
+    return this.httpClient.get('http://localhost:3000/contacts', {
+      params: httpParams
+    });
+
   }
 
   callingFromTemplate() {
