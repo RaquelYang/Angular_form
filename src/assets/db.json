@@ -1,4 +1,11 @@
 {
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "Raquel",
+      "lastName": "Yang"
+    }
+  ],
   "posts": [
     { "id": 1, "title": "json-server", "author": "typicode" }
   ],
